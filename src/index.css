@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --color-brand-950: #020617;
+  --color-brand-900: #051029;
+  --color-brand-800: #0a1e42;
+  --color-brand-700: #0f2c5c;
+  --color-brand-600: #123a78;
+  --color-brand-500: #1650a0;
+  --color-brand-400: #2f7bd6;
+  --color-brand-300: #5fa3e8;
+  --color-brand-200: #9cc7f2;
+  --color-brand-100: #d6e8fb;
+
+  --color-cyan-glow: #22d3ee;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-brand-950);
+  color: #e2e8f0;
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--color-cyan-glow);
+  color: #020617;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #5fa3e8 0%, #22d3ee 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-16px); }
+}
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fade-up 0.7s ease-out both;
+}
