@@ -1,4 +1,5 @@
 import { CheckCircle2 } from 'lucide-react'
+import rodrigoPhoto from '../assets/rodrigo-sobral.jpg'
 
 const HIGHLIGHTS = [
   'Ciclo completo de desenvolvimento: requisitos, arquitetura, testes e implantação',
@@ -28,9 +29,11 @@ export default function Founder() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid lg:grid-cols-[320px_1fr] gap-12 items-start">
           <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-8 text-center lg:sticky lg:top-28">
-            <div className="mx-auto flex h-28 w-28 items-center justify-center rounded-full bg-gradient-to-br from-brand-400 to-cyan-glow text-3xl font-bold text-brand-950">
-              RS
-            </div>
+            <img
+              src={rodrigoPhoto}
+              alt="Rodrigo Figueiredo Sobral"
+              className="mx-auto h-28 w-28 rounded-full object-cover ring-2 ring-brand-400/40"
+            />
             <h3 className="mt-5 text-xl font-semibold text-white">Rodrigo Figueiredo Sobral</h3>
             <p className="mt-1 text-sm text-brand-300">Co-Fundador da STI Soluções</p>
             <p className="mt-2 text-sm text-slate-400">Analista de Sistemas</p>
