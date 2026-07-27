@@ -1,10 +1,17 @@
-import { Building2 } from 'lucide-react'
+import { Building2, Landmark } from 'lucide-react'
 
-const CLIENTS = [
-  'Bradesco Seguros',
-  'Secretaria de Fazenda do Estado do Rio de Janeiro',
-  'CNP Seguradora',
-  'BRT Sorocaba',
+const OTHER_CLIENTS = ['Bradesco Seguros', 'CNP Seguradora', 'BRT Sorocaba']
+
+const SEFAZ_TECH = [
+  'Java',
+  'JavaScript',
+  'JSP',
+  'Maven',
+  'Oracle',
+  'GitLab',
+  'JasperSoft Studio (iReport)',
+  'OpenShift / WebLogic',
+  'JMeter',
 ]
 
 export default function Clients() {
@@ -22,18 +29,56 @@ export default function Clients() {
           </p>
         </div>
 
-        <div className="mt-14 grid sm:grid-cols-2 gap-6">
-          {CLIENTS.map((name) => (
-            <div
-              key={name}
-              className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-6 hover:border-brand-400/40 transition-colors"
-            >
+        <div className="mt-14 space-y-6">
+          <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-8 hover:border-brand-400/40 transition-colors">
+            <div className="flex items-start gap-4">
               <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 to-brand-800">
-                <Building2 className="h-6 w-6 text-white" />
+                <Landmark className="h-6 w-6 text-white" />
               </span>
-              <span className="text-lg font-semibold text-white">{name}</span>
+              <div>
+                <p className="text-xs font-medium text-brand-300 uppercase tracking-wide">Setor Público</p>
+                <h3 className="text-lg font-semibold text-white">
+                  Secretaria de Fazenda do Estado do Rio de Janeiro
+                </h3>
+              </div>
             </div>
-          ))}
+
+            <p className="mt-5 text-sm text-slate-300 leading-relaxed">
+              Desenvolvimento e manutenção das aplicações GCT Portal de
+              Pagamentos e GCT Recolhimento Especial, responsáveis pela
+              emissão do DARJ (Documento de Arrecadação do Estado do Rio de
+              Janeiro). O trabalho incluiu correção de bugs em produção,
+              implementação de melhorias de funcionalidades e planejamento
+              das atividades diárias conforme prazos definidos em equipe,
+              sempre priorizando comunicação transparente e entregas de
+              excelência.
+            </p>
+
+            <div className="mt-5 flex flex-wrap gap-2">
+              {SEFAZ_TECH.map((tech) => (
+                <span
+                  key={tech}
+                  className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-200"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid sm:grid-cols-3 gap-6">
+            {OTHER_CLIENTS.map((name) => (
+              <div
+                key={name}
+                className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-6 hover:border-brand-400/40 transition-colors"
+              >
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 to-brand-800">
+                  <Building2 className="h-6 w-6 text-white" />
+                </span>
+                <span className="text-lg font-semibold text-white">{name}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
