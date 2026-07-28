@@ -1,17 +1,34 @@
-import { Building2, Landmark } from 'lucide-react'
+import { Building2, Landmark, ShieldCheck } from 'lucide-react'
 
-const OTHER_CLIENTS = ['Bradesco Seguros', 'CNP Seguradora', 'BRT Sorocaba']
+const OTHER_CLIENTS = ['CNP Seguradora', 'BRT Sorocaba']
 
-const SEFAZ_TECH = [
-  'Java',
-  'JavaScript',
-  'JSP',
-  'Maven',
-  'Oracle',
-  'GitLab',
-  'JasperSoft Studio (iReport)',
-  'OpenShift / WebLogic',
-  'JMeter',
+const FEATURED_CLIENTS = [
+  {
+    name: 'Secretaria de Fazenda do Estado do Rio de Janeiro',
+    tag: 'Setor Público',
+    icon: Landmark,
+    description:
+      'Desenvolvimento e manutenção das aplicações GCT Portal de Pagamentos e GCT Recolhimento Especial, responsáveis pela emissão do DARJ (Documento de Arrecadação do Estado do Rio de Janeiro). O trabalho incluiu correção de bugs em produção, implementação de melhorias de funcionalidades e planejamento das atividades diárias conforme prazos definidos em equipe, sempre priorizando comunicação transparente e entregas de excelência.',
+    tech: [
+      'Java',
+      'JavaScript',
+      'JSP',
+      'Maven',
+      'Oracle',
+      'GitLab',
+      'JasperSoft Studio (iReport)',
+      'OpenShift / WebLogic',
+      'JMeter',
+    ],
+  },
+  {
+    name: 'Bradesco Seguros',
+    tag: 'Seguros',
+    icon: ShieldCheck,
+    description:
+      'Desenvolvimento de soluções para atender às demandas dos usuários do Bradesco Seguros, com planejamento de metas e cronogramas para garantir a entrega dos projetos dentro do prazo. Atuação no centro de custo WSCB, com análise de vulnerabilidades apontadas em relatórios Fortify e implementação de correções e melhorias de código. Participação também na migração de aplicações para WAS9 e DataPower, sempre priorizando comunicação transparente com o cliente.',
+    tech: ['Java (1.6, 1.8)', 'WebSphere', 'JSP', 'Struts', 'WAS9', 'DataPower', 'Fortify'],
+  },
 ]
 
 export default function Clients() {
@@ -30,43 +47,37 @@ export default function Clients() {
         </div>
 
         <div className="mt-14 space-y-6">
-          <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-8 hover:border-brand-400/40 transition-colors">
-            <div className="flex items-start gap-4">
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 to-brand-800">
-                <Landmark className="h-6 w-6 text-white" />
-              </span>
-              <div>
-                <p className="text-xs font-medium text-brand-300 uppercase tracking-wide">Setor Público</p>
-                <h3 className="text-lg font-semibold text-white">
-                  Secretaria de Fazenda do Estado do Rio de Janeiro
-                </h3>
+          {FEATURED_CLIENTS.map(({ name, tag, icon: Icon, description, tech }) => (
+            <div
+              key={name}
+              className="rounded-2xl border border-white/10 bg-white/[0.03] p-8 hover:border-brand-400/40 transition-colors"
+            >
+              <div className="flex items-start gap-4">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 to-brand-800">
+                  <Icon className="h-6 w-6 text-white" />
+                </span>
+                <div>
+                  <p className="text-xs font-medium text-brand-300 uppercase tracking-wide">{tag}</p>
+                  <h3 className="text-lg font-semibold text-white">{name}</h3>
+                </div>
+              </div>
+
+              <p className="mt-5 text-sm text-slate-300 leading-relaxed">{description}</p>
+
+              <div className="mt-5 flex flex-wrap gap-2">
+                {tech.map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-200"
+                  >
+                    {item}
+                  </span>
+                ))}
               </div>
             </div>
+          ))}
 
-            <p className="mt-5 text-sm text-slate-300 leading-relaxed">
-              Desenvolvimento e manutenção das aplicações GCT Portal de
-              Pagamentos e GCT Recolhimento Especial, responsáveis pela
-              emissão do DARJ (Documento de Arrecadação do Estado do Rio de
-              Janeiro). O trabalho incluiu correção de bugs em produção,
-              implementação de melhorias de funcionalidades e planejamento
-              das atividades diárias conforme prazos definidos em equipe,
-              sempre priorizando comunicação transparente e entregas de
-              excelência.
-            </p>
-
-            <div className="mt-5 flex flex-wrap gap-2">
-              {SEFAZ_TECH.map((tech) => (
-                <span
-                  key={tech}
-                  className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-200"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className="grid sm:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 gap-6">
             {OTHER_CLIENTS.map((name) => (
               <div
                 key={name}
