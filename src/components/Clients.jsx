@@ -1,6 +1,6 @@
 import { Building2, Landmark, ShieldCheck } from 'lucide-react'
 
-const OTHER_CLIENTS = ['CNP Seguradora', 'BRT Sorocaba']
+const OTHER_CLIENTS = ['BRT Sorocaba']
 
 const FEATURED_CLIENTS = [
   {
@@ -81,7 +81,7 @@ export default function Clients() {
             {OTHER_CLIENTS.map((name) => (
               <div
                 key={name}
-                className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-6 hover:border-brand-400/40 transition-colors"
+                className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-6 hover:border-brand-400/40 transition-colors sm:max-w-sm"
               >
                 <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 to-brand-800">
                   <Building2 className="h-6 w-6 text-white" />
