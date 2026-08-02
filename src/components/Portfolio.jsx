@@ -55,34 +55,16 @@ const AGENDAPRO = {
 
 const OTHER_PROJECTS = [
   {
-    title: 'Migração para Nuvem Híbrida',
-    tag: 'Cloud & Infraestrutura',
-    desc: 'Migração de data center on-premise para ambiente híbrido, reduzindo custos em 35%.',
-    gradient: 'from-cyan-glow/60 to-brand-800',
-  },
-  {
     title: 'App de Gestão de Estoque',
     tag: 'Mobile',
     desc: 'Aplicativo mobile para controle de estoque em tempo real integrado ao ERP do cliente.',
     gradient: 'from-brand-400/70 to-brand-900',
   },
   {
-    title: 'Hardening de Segurança',
-    tag: 'Segurança da Informação',
-    desc: 'Implementação de políticas de segurança e monitoramento contínuo contra ameaças.',
-    gradient: 'from-brand-700 to-brand-950',
-  },
-  {
     title: 'Automação de Atendimento',
     tag: 'Suporte & Automação',
     desc: 'Central de chamados automatizada, reduzindo o tempo médio de resposta em 60%.',
     gradient: 'from-brand-500 to-cyan-glow/40',
-  },
-  {
-    title: 'Rede Corporativa Multi-filial',
-    tag: 'Infraestrutura de TI',
-    desc: 'Projeto e implantação de rede segura conectando 8 filiais em tempo real.',
-    gradient: 'from-brand-800 to-brand-600',
   },
 ]
 
