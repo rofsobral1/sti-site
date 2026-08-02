@@ -7,6 +7,7 @@ export default function ProjectModal({ project, onClose }) {
   useEffect(() => {
     const onKeyDown = (e) => {
       if (e.key === 'Escape') onClose()
+      if (!project.images) return
       if (e.key === 'ArrowRight') setActiveImage((i) => (i + 1) % project.images.length)
       if (e.key === 'ArrowLeft') setActiveImage((i) => (i - 1 + project.images.length) % project.images.length)
     }
@@ -16,7 +17,7 @@ export default function ProjectModal({ project, onClose }) {
       document.removeEventListener('keydown', onKeyDown)
       document.body.style.overflow = ''
     }
-  }, [onClose, project.images.length])
+  }, [onClose, project.images])
 
   return (
     <div
@@ -35,57 +36,73 @@ export default function ProjectModal({ project, onClose }) {
           <X className="h-4 w-4" />
         </button>
 
-        <div className="relative aspect-video bg-brand-900">
-          <img
-            src={project.images[activeImage].src}
-            alt={project.images[activeImage].caption}
-            className="h-full w-full object-cover object-top"
-          />
-          {project.images.length > 1 && (
-            <>
-              <button
-                onClick={() => setActiveImage((i) => (i - 1 + project.images.length) % project.images.length)}
-                aria-label="Imagem anterior"
-                className="absolute left-3 top-1/2 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full bg-brand-950/70 border border-white/10 text-white hover:bg-brand-950/90 transition-colors"
-              >
-                <ChevronLeft className="h-5 w-5" />
-              </button>
-              <button
-                onClick={() => setActiveImage((i) => (i + 1) % project.images.length)}
-                aria-label="Próxima imagem"
-                className="absolute right-3 top-1/2 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full bg-brand-950/70 border border-white/10 text-white hover:bg-brand-950/90 transition-colors"
-              >
-                <ChevronRight className="h-5 w-5" />
-              </button>
-            </>
-          )}
-          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
-            {project.images.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setActiveImage(i)}
-                aria-label={`Ver imagem ${i + 1}`}
-                className={`h-1.5 rounded-full transition-all ${
-                  i === activeImage ? 'w-6 bg-white' : 'w-1.5 bg-white/40'
-                }`}
-              />
-            ))}
+        {project.video ? (
+          <div className="relative aspect-video bg-brand-900">
+            <video
+              src={project.video}
+              controls
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="h-full w-full object-contain"
+            />
           </div>
-        </div>
+        ) : (
+          <>
+            <div className="relative aspect-video bg-brand-900">
+              <img
+                src={project.images[activeImage].src}
+                alt={project.images[activeImage].caption}
+                className="h-full w-full object-cover object-top"
+              />
+              {project.images.length > 1 && (
+                <>
+                  <button
+                    onClick={() => setActiveImage((i) => (i - 1 + project.images.length) % project.images.length)}
+                    aria-label="Imagem anterior"
+                    className="absolute left-3 top-1/2 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full bg-brand-950/70 border border-white/10 text-white hover:bg-brand-950/90 transition-colors"
+                  >
+                    <ChevronLeft className="h-5 w-5" />
+                  </button>
+                  <button
+                    onClick={() => setActiveImage((i) => (i + 1) % project.images.length)}
+                    aria-label="Próxima imagem"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full bg-brand-950/70 border border-white/10 text-white hover:bg-brand-950/90 transition-colors"
+                  >
+                    <ChevronRight className="h-5 w-5" />
+                  </button>
+                </>
+              )}
+              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+                {project.images.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActiveImage(i)}
+                    aria-label={`Ver imagem ${i + 1}`}
+                    className={`h-1.5 rounded-full transition-all ${
+                      i === activeImage ? 'w-6 bg-white' : 'w-1.5 bg-white/40'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
 
-        <div className="flex gap-2 overflow-x-auto px-6 pt-4">
-          {project.images.map((img, i) => (
-            <button
-              key={i}
-              onClick={() => setActiveImage(i)}
-              className={`shrink-0 overflow-hidden rounded-lg border-2 transition-colors ${
-                i === activeImage ? 'border-brand-400' : 'border-transparent opacity-60 hover:opacity-100'
-              }`}
-            >
-              <img src={img.src} alt={img.caption} className="h-14 w-24 object-cover object-top" />
-            </button>
-          ))}
-        </div>
+            <div className="flex gap-2 overflow-x-auto px-6 pt-4">
+              {project.images.map((img, i) => (
+                <button
+                  key={i}
+                  onClick={() => setActiveImage(i)}
+                  className={`shrink-0 overflow-hidden rounded-lg border-2 transition-colors ${
+                    i === activeImage ? 'border-brand-400' : 'border-transparent opacity-60 hover:opacity-100'
+                  }`}
+                >
+                  <img src={img.src} alt={img.caption} className="h-14 w-24 object-cover object-top" />
+                </button>
+              ))}
+            </div>
+          </>
+        )}
 
         <div className="p-6 md:p-8">
           <span className="text-xs font-medium text-brand-300 uppercase tracking-wide">{project.tag}</span>

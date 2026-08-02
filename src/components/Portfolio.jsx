@@ -2,9 +2,6 @@ import { useState } from 'react'
 import { ArrowUpRight, Eye } from 'lucide-react'
 import ProjectModal from './ProjectModal'
 import agendaProLogin from '../assets/agendapro/login.jpg'
-import agendaProCadastro from '../assets/agendapro/cadastro.jpg'
-import agendaProPreenchimento from '../assets/agendapro/preenchimento.jpg'
-import agendaProPainel from '../assets/agendapro/painel.jpg'
 
 const AGENDAPRO = {
   title: 'AgendaPro',
@@ -16,12 +13,7 @@ const AGENDAPRO = {
     title: 'AgendaPro',
     description:
       'AgendaPro é um SaaS multi-tenant de agendamento e gestão para pequenos negócios — salões, barbearias, clínicas, estúdios, academias, consultórios, pet shops e outros. Donos de negócio se cadastram, montam seu catálogo de serviços e equipe, e passam a receber agendamentos automaticamente: tanto pelos próprios clientes, através de um link público sem necessidade de login, quanto lançados manualmente pela equipe. Em troca, pagam uma assinatura mensal para usar a plataforma.',
-    images: [
-      { src: agendaProLogin, caption: 'Tela de login' },
-      { src: agendaProCadastro, caption: 'Cadastro do negócio' },
-      { src: agendaProPreenchimento, caption: 'Preenchimento dos dados do negócio' },
-      { src: agendaProPainel, caption: 'Painel inicial' },
-    ],
+    video: '/agendapro/demo-agendapro.webm',
     flow: [
       'Dona/dono do negócio se cadastra em /registrar e ganha 14 dias de teste grátis.',
       'Cadastra serviços (Catálogo), profissionais e os horários de expediente de cada um (Equipe).',
